@@ -1,5 +1,6 @@
-import {combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import {renameMeReducer} from "./renameMeReducer";
+import thunk from "redux-thunk";
 
 export type AppStateType = ReturnType<typeof rootReducer>
 
@@ -8,6 +9,6 @@ const rootReducer = combineReducers({
     }
 )
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 export default store
